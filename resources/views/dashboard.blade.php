@@ -21,20 +21,28 @@
 
                         <div class="p-6 pt-4 relative">
 
-                            <div class="absolute -top-10 left-6 w-16 h-16 bg-gradient-to-tr from-indigo-100 to-blue-50 rounded-xl border-4 border-white dark:border-gray-800 shadow-md flex items-center justify-center text-2xl font-bold text-indigo-600">
-                                {{ mb_substr($employee->name, 0, 1)}}
+                            <div class="absolute -top-10 left-6 w-16 h-16 bg-gradient-to-tr from-indigo-100 to-blue-50 rounded-xl border-4 border-white dark:border-gray-800 shadow-md flex items-center justify-center text-3xl font-semibold text-indigo-600">
+                            {{ str($employee->title)->substr(0, 1)->upper()}}{{str($employee->title[1])->upper()}}
                             </div>
 
                             <div class="mb-5 mt-4">
                                 <h3 class="text-xl font-bold text-gray-900 dark:text-white tracking-tight mb-1">
-                                    {{ $employee->name }}
+                                    {{ $employee->title }}
                                 </h3>
                                 <span class="inline-flex items-center text-xs font-semibold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-md">
-                                    {{ $employee->department }}
+                                    {{ $employee->description }}
                                 </span>
                             </div>
 
                             <div class="space-y-3.5 border-t border-gray-100 dark:border-gray-700 pt-4 text-sm">
+                            <div class="flex items-center justify-between">
+                                    <span class="text-gray-400 font-medium flex items-center gap-1.5">
+                                        Jop Title
+                                    </span>
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium text-right">
+                                        {{ $employee->department }}
+                                    </span>
+                                </div>
                                 <div class="flex items-center justify-between">
                                     <span class="text-gray-400 font-medium flex items-center gap-1.5">
                                         Address
@@ -58,9 +66,13 @@
                                 <x-button class="w-full bg-gray-900 dark:bg-gray-700 hover:bg-gray-900/40 text-white text-[16px] font-semibold py-2.5 px-4 rounded-xl active:scale-[0.98] transition-all">
                                     View Profile
                                 </x-button>
-                                <x-button variant="destructive" class="bg-gray-50 dark:bg-red-700 hover:bg-red-800 border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-200 rounded-xl p-2.5 active:scale-[0.98] transition-all" title="Edit">
-                                    Delete
-                                </x-button>
+                                <form action="/dashboard/{{$employee->id}}/delete" method="post">
+                                    @csrf
+                                    @method("DELETE")
+                                    <x-button type="submit" variant="destructive" class="bg-gray-50 dark:bg-red-700 hover:bg-red-800 border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-200 rounded-xl p-2.5 active:scale-[0.98] transition-all" title="Edit">
+                                        Delete
+                                    </x-button>
+                                </form>
                             </div>
 
                         </div>

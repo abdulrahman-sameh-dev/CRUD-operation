@@ -31,8 +31,9 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name'       => 'required',
-            'address'    => 'required',
+            'title'      => 'required',
+            'address'      => 'required',
+            'description'=> 'required',
             'salary'     => 'required',
             'department' => 'required',
         ]);
@@ -71,6 +72,8 @@ class EmployeeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $employee = Employee::find($id);
+        $employee->delete();
+        return redirect()->route("dashboard")->with('success', 'User Deleted Successfully');
     }
 }
