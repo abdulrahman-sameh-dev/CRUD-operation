@@ -1,0 +1,35 @@
+<!-- HOW TO USE THIS BUTTON  -->
+
+
+    <!-- Primary/Default -->
+<!-- <x-button>Deploy App</x-button> -->
+
+    <!-- Secondary -->
+<!-- <x-button variant="secondary">Cancel</x-button> -->
+
+    <!-- Outline Variant (Standard Secondary CTA) -->
+<!-- <x-button variant="outline">Manage Settings</x-button> -->
+
+    <!-- Destructive Mini Trigger -->
+<!-- <x-button variant="destructive" size="sm">Delete</x-button> -->
+
+    <!-- Ghost Icon Action -->
+<!-- <x-button variant="ghost" size="icon" aria-label="Notifications">
+    <svg xmlns="http://w3.org" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+</x-button> -->
+
+
+    <!-- Navigate to a named route -->
+<!-- <x-button :href="route('dashboard.index')">
+    Go to Dashboard
+</x-button> -->
+
+    <!-- Outline style navigating to a profile page with an ID -->
+<!-- <x-button variant="outline" :href="route('profile.show', ['id' => $user->id])">
+    View Profile
+</x-button> -->
+
+    <!-- Ghost style using a hardcoded URL string (Notice the missing colon ':') -->
+<!-- <x-button variant="ghost" href="/settings">
+    Settings
+</x-button> -->
