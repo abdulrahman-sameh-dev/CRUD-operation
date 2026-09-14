@@ -54,17 +54,26 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Employee $employee)
     {
-        //
+        return view('edit', compact('employee'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Employee $employee)
     {
-        //
+        $validated = $request->validate([
+        'title'       => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'department'  => 'required|string|max:255',
+        'salary'       => 'required|numeric|min:0',
+        'address'     => 'nullable|string|max:255',
+    ]);
+
+        $employee->update($validated);
+        return redirect()->route('employees.show', $employee->id)->with('success', 'Employee updated successfully');
     }
 
     /**

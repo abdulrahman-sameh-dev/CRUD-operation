@@ -17,6 +17,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/dashboard', [EmployeeController::class, 'store'])->name('employees.store');
     Route::get('/dashboard/{employee}', [EmployeeController::class, 'show'])->name('employees.show');
     Route::delete('/dashboard/{employee}/delete', [EmployeeController::class, 'destroy'])->name('employees.destroy');
+    Route::get('/dashboard/{employee}/edit', [EmployeeController::class, 'edit'])->name('employees.edit');
+    Route::put('/dashboard/{employee}', [EmployeeController::class, 'update'])->name('employees.update');
 });
 
 Route::middleware('auth')->group(function () {
