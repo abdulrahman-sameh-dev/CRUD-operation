@@ -11,11 +11,13 @@ Route::get('/', function () {
 Route::get('/dashboard', [EmployeeController::class, "index"])->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::get('/create', [EmployeeController::class, 'create'])->middleware(['auth'])->name('create');
-Route::view('/create' , 'create')->name('create');
-Route::post('/dashboard', [EmployeeController::class, 'store'])->name('dashboard.store');
-Route::delete('/dashboard/{id}/delete', [EmployeeController::class, 'destroy'])->name('dashboard.store');
-
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [EmployeeController::class, 'index'])->name('dashboard');
+    Route::get('/create', [EmployeeController::class, 'create'])->name('create');
+    Route::post('/dashboard', [EmployeeController::class, 'store'])->name('employees.store');
+    Route::get('/dashboard/{employee}', [EmployeeController::class, 'show'])->name('employees.show');
+    Route::delete('/dashboard/{employee}/delete', [EmployeeController::class, 'destroy'])->name('employees.destroy');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

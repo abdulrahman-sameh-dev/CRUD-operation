@@ -63,8 +63,8 @@
                             </div>
 
                             <div class="mt-6 pt-4 border-t border-gray-100 dark:border-gray-700 flex gap-2">
-                                <x-button class="w-full bg-gray-900 dark:bg-gray-700 hover:bg-gray-900/40 text-white text-[16px] font-semibold py-2.5 px-4 rounded-xl active:scale-[0.98] transition-all">
-                                    View Profile
+                                <x-button :href="route('employees.show', $employee->id)" class="w-full bg-gray-900 dark:bg-gray-700 hover:bg-gray-900/40 text-white text-[16px] font-semibold py-2.5 px-4 rounded-xl active:scale-[0.98] transition-all">
+                                        View Profile
                                 </x-button>
                                 <form action="/dashboard/{{$employee->id}}/delete" method="post">
                                     @csrf

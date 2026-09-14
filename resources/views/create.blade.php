@@ -18,7 +18,7 @@
                 </div>
 
                 {{-- Form Body --}}
-                <form action="{{ route('dashboard.store') }}" method="POST" class="p-6 space-y-4">
+                <form action="{{ route('employees.store') }}" method="POST" class="p-6 space-y-4">
                     @csrf
 
                     <!-- Full Name -->
