@@ -37,7 +37,7 @@
 
                         <div class="space-y-4 border-t border-gray-100 dark:border-gray-700 pt-6 text-sm">
                             <div class="flex items-center justify-between py-1">
-                                <span class="font-medium text-lg text-white">Job Title / Department</span>
+                                <span class="font-medium text-lg text-white">Job title / Department</span>
                                 <input name="department" value="{{ old('department', $employee->department) }}" class="dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-md text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all items-center text-md font-semibold bg-indigo-50 dark:bg-indigo-900/40 px-2 text-end">
                                 @error('department')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -76,7 +76,7 @@
 
                             <div class="flex items-center gap-3">
                                 <button type="submit" class="inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-5 rounded-xl shadow-md hover:shadow-indigo-500/20 active:scale-[0.98] transition-all">
-                                    Save Ubdates
+                                    Save ubdates
                                 </button>
 
                             </div>

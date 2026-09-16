@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::orderBy('id', 'Desc')->simplePaginate(14);
+        $employees = Employee::orderBy('id', 'Desc')->simplePaginate(25);
 
         return view("dashboard", compact('employees'));
     }
@@ -28,17 +29,9 @@ class EmployeeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EmployeeRequest $request)
     {
-        $validated = $request->validate([
-            'title'      => 'required',
-            'address'      => 'required',
-            'description'=> 'required',
-            'salary'     => 'required',
-            'department' => 'required',
-        ]);
-
-        Employee::create($validated);
+        Employee::create($request->validated());
 
         return redirect()->route('dashboard')->with('success', 'Employee created successfully.');
     }
@@ -62,26 +55,19 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Employee $employee)
+    public function update(EmployeeRequest $request, Employee $employee)
     {
-        $validated = $request->validate([
-        'title'       => 'required|string|max:255',
-        'description' => 'nullable|string',
-        'department'  => 'required|string|max:255',
-        'salary'       => 'required|numeric|min:0',
-        'address'     => 'nullable|string|max:255',
-    ]);
-
-        $employee->update($validated);
+        $employee->update($request->validated());
+     
         return redirect()->route('employees.show', $employee->id)->with('success', 'Employee updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Employee $employee)
     {
-        $employee = Employee::find($id);
+        $employee = Employee::find($employee->id);
         $employee->delete();
         return redirect()->route("dashboard")->with('success', 'User Deleted Successfully');
     }

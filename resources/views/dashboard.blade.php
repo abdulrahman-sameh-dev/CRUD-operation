@@ -7,9 +7,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <h1 class="text-3xl text-white mb-4 font-bold">Employees</h1>
+            <h1 class="text-3xl text-black dark:text-white mb-4 font-bold">Employees</h1>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100 grid grid-cols-3 gap-4">
+                <div class="p-6 text-gray-900 dark:text-gray-100 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 max gap-4">
                     @forelse($employees as $employee)
                     <div class="w-full bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 overflow-hidden">
 
@@ -37,7 +37,7 @@
                             <div class="space-y-3.5 border-t border-gray-100 dark:border-gray-700 pt-4 text-sm">
                             <div class="flex items-center justify-between">
                                     <span class="text-gray-400 font-medium flex items-center gap-1.5">
-                                        Jop Title
+                                    Job title
                                     </span>
                                     <span class="text-gray-700 dark:text-gray-300 font-medium text-right">
                                         {{ $employee->department }}
@@ -83,6 +83,9 @@
                     </div>
                     @endforelse
 
+                </div>
+                <div class="px-10 py-4">
+                    {{ $employees->links() }}
                 </div>
             </div>
         </div>

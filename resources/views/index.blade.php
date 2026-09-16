@@ -87,12 +87,13 @@ $alignmentClass = Auth::check() ? 'justify-between' : 'justify-end';
             @auth
             <div class="flex flex-col gap-8 items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
                 <h1 class="text-white text-2xl">Go to the Dashboard to check on my Employees.</h1>
-                <!-- Primary/Default -->
+
                 <x-button :href="route('dashboard')">Check from here</x-button>
+                {{ Auth::check() }}
             </div>
 
             @else
-            <h1 class="text-2xl text-white text-center w-full">welcome to our app please register to </h1>
+            <h1 class="text-2xl text-white text-center w-full">welcome to our app please register to start browsing in our app. </h1>
             @endauth
         </main>
         @endif
