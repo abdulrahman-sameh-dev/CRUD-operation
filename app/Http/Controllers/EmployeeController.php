@@ -22,7 +22,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('employees.create');
     }
 
     /**
@@ -56,7 +56,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        return view('edit', compact('employee'));
+        return view('employees.edit', compact('employee'));
     }
 
     /**
